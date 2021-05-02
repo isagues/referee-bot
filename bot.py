@@ -1,30 +1,16 @@
-# import discord
-#
-#
-# class MyClient(discord.Client):
-#
-#     async def on_ready(self):
-#         print('Logged on as {0}!'.format(self.user))
-#
-#     async def on_message(self, message):
-#         print('Message from {0.author}: {0.content}'.format(message))
-#
-#     async def on_reaction_add(self, reaction, user):
-#         print(f'Reaccion! {reaction} {user}')
-#
-#
-# client = MyClient()
-# client.run('ODM3NDUwNzYzNzc2OTUwMzMz.YIsuzQ.pmc4b-_Ne99wX9hQ88dr5uB74l0')
 import sched
 import time
 import asyncio
 import threading
 
+import config
 import discord
+
+config = config.get_config()
 
 client = discord.Client()
 s = sched.scheduler(time.time, time.sleep)
-TOKEN = 'ODM3NDUwNzYzNzc2OTUwMzMz.YIsuzQ.pmc4b-_Ne99wX9hQ88dr5uB74l0'
+TOKEN = config['token']
 RED_CARD: str = b"\xF0\x9F\x9F\xA5".decode("utf-8")
 YELLOW_CARD: str = b"\xF0\x9F\x9F\xA8".decode("utf-8")
 TIMEOUT_TIME: int = 120
